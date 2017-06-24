@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Yarra Valley Racing Centre</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel="icon" href="favicon.png">
+
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='libs/style.css' rel='stylesheet' />
+
+</head>
+
+<body>
+    <nav id="menu">
+        <a id="fill" href="#" class="active">polygon</a>
+        <a id="raster" href="#" class="active">raster</a>
+    </nav>
+    <div id='map'></div>
+    <div class='map-overlay top'>
+        <div class='map-overlay-inner'>
+            <p>Average NDVI values</p>
+            <!--<label class="radio-inline"><input type="radio" name="optradio">Jan</label>-->
+            <label class="radio-inline"><input type="radio" name="optradio" value="feb" checked>Feb</label>
+            <!--<label class="radio-inline"><input type="radio" name="optradio">Mar</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Apr</label>
+            <label class="radio-inline"><input type="radio" name="optradio">May</label>-->
+            <label class="radio-inline"><input type="radio" name="optradio" value="jun">Jun</label>
+            <!--<br>
+            <label class="radio-inline"><input type="radio" name="optradio">Jul</label>&nbsp;
+            <label class="radio-inline"><input type="radio" name="optradio">Aug</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Sep</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Oct</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Nov</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Dec</label>-->
+        </div>
+        <div class='map-overlay-inner'>
+            <div id='legend' class='legend'>
+                <div class='bar-blue'></div>
+                <div class='bar-green'></div>
+                <div class='bar-red'></div>
+            </div>
+            <div id='legend-feb' class='legend'>
+                <div class='bar'>val &#60; 0.8823</div>
+                <div class='bar'>0.8823 &#60;= val &#60; 0.8973</div>
+                <div class='bar'>val > 0.8973</div>
+            </div>
+            <div id='legend-jun' class='legend'>
+                <div class='bar'>val &#60; 0.8974</div>
+                <div class='bar'>0.8974 &#60;= val &#60; 0.9073</div>
+                <div class='bar'>val > 0.9073</div>
+            </div>
+
+        </div>
+    </div>
+    <script src='libs/main.js'></script>
+</body>
+
+</html>
