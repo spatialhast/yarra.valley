@@ -80,14 +80,14 @@ body {
     margin: 0 0 4px;
 }
 
-/*.map-overlay input {
+.map-overlay input {
     background-color: transparent;
     display: inline-block;
     width: 100%;
     position: relative;
     margin: 0;
     cursor: ew-resize;
-}*/
+}
 
 .map-overlay .legend {
     height: 100%;
@@ -122,6 +122,3 @@ body {
 #legend-jun {
     display: none;
 }
-
-
-

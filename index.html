@@ -27,19 +27,8 @@
     <div class='map-overlay top'>
         <div class='map-overlay-inner'>
             <p>Average NDVI values</p>
-            <!--<label class="radio-inline"><input type="radio" name="optradio">Jan</label>-->
-            <label class="radio-inline"><input type="radio" name="optradio" value="feb" checked>Feb</label>
-            <!--<label class="radio-inline"><input type="radio" name="optradio">Mar</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Apr</label>
-            <label class="radio-inline"><input type="radio" name="optradio">May</label>-->
-            <label class="radio-inline"><input type="radio" name="optradio" value="jun">Jun</label>
-            <!--<br>
-            <label class="radio-inline"><input type="radio" name="optradio">Jul</label>&nbsp;
-            <label class="radio-inline"><input type="radio" name="optradio">Aug</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Sep</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Oct</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Nov</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Dec</label>-->
+            <label id='month'></label>
+            <input id='slider' type='range' min='0' max='1' step='1' value='0' />
         </div>
         <div class='map-overlay-inner'>
             <div id='legend' class='legend'>

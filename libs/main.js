@@ -98,62 +98,78 @@ if (!mapboxgl.supported()) {
 				'fill-opacity': 1
 			}
 		});
-	});
 
-	var monthArr = ['feb', 'jun'];
-	var activeLayers = ['fill', 'raster'];
+		var monthArr = ['feb', 'jun'];
+		var activeLayers = ['fill', 'raster'];
 
-	function getActiveLayers() {
-		var month = 'feb';
-		$(".map-overlay.top input:checked").each(function (index) {
-			month = $(this).attr('value');
-		});
+		function getActiveLayers() {
+			var month = selectedMonth;
 
-		activeLayers = [];
-		$("#menu .active").each(function (index) {
-			activeLayers.push($(this).attr('id'));
-		});
-
-		map.setLayoutProperty('raster_feb', 'visibility', 'none');
-		map.setLayoutProperty('fill_feb', 'visibility', 'none');
-		map.setLayoutProperty('raster_jun', 'visibility', 'none');
-		map.setLayoutProperty('fill_jun', 'visibility', 'none');
-
-		if (activeLayers.length > 0) {
-			activeLayers.forEach(function (item_layer, i, arr) {
-				monthArr.forEach(function (item_month, i, arr) {
-					var fill_layer = item_layer + '_' + item_month;
-					var raster_layer = item_layer + '_' + item_month;
-					if (month != item_month) {
-						var el = "#legend-" + item_month;
-						$(el).css("display", "none");
-						map.setLayoutProperty(fill_layer, 'visibility', 'none');
-						map.setLayoutProperty(raster_layer, 'visibility', 'none');
-					} else {
-						var el = "#legend-" + item_month;
-						$(el).css("display", "flex");
-						map.setLayoutProperty(fill_layer, 'visibility', 'visible');
-						map.setLayoutProperty(raster_layer, 'visibility', 'visible');
-					};
-				});
+			activeLayers = [];
+			$("#menu .active").each(function (index) {
+				activeLayers.push($(this).attr('id'));
 			});
-		};
-	};
 
-	$(".map-overlay.top input").click(function (e) {
-		getActiveLayers();
+			map.setLayoutProperty('raster_feb', 'visibility', 'none');
+			map.setLayoutProperty('fill_feb', 'visibility', 'none');
+			map.setLayoutProperty('raster_jun', 'visibility', 'none');
+			map.setLayoutProperty('fill_jun', 'visibility', 'none');
+
+			if (activeLayers.length > 0) {
+				activeLayers.forEach(function (item_layer, i, arr) {
+					monthArr.forEach(function (item_month, i, arr) {
+						var fill_layer = item_layer + '_' + item_month;
+						var raster_layer = item_layer + '_' + item_month;
+						if (month != item_month) {
+							var el = "#legend-" + item_month;
+							$(el).css("display", "none");
+							map.setLayoutProperty(fill_layer, 'visibility', 'none');
+							map.setLayoutProperty(raster_layer, 'visibility', 'none');
+						} else {
+							var el = "#legend-" + item_month;
+							$(el).css("display", "flex");
+							map.setLayoutProperty(fill_layer, 'visibility', 'visible');
+							map.setLayoutProperty(raster_layer, 'visibility', 'visible');
+						};
+					});
+				});
+			};
+		};
+
+		var months = [
+			'February',
+			'June'
+		];
+
+		document.getElementById('slider').addEventListener('input', function (e) {
+			var month = parseInt(e.target.value, 10);
+			filterBy(month);
+		});
+
+		var selectedMonth = 'feb';
+
+		function filterBy(month) {
+			document.getElementById('month').textContent = months[month];
+			selectedMonth = months[month].toLowerCase().substring(0, 3);
+			getActiveLayers();
+		};
+
+		$("#menu a").click(function (e) {
+			var clickedLayer = this.id;
+			e.preventDefault();
+			e.stopPropagation();
+
+			if (this.className === 'active') {
+				this.className = '';
+			} else {
+				this.className = 'active';
+			};
+
+			getActiveLayers();
+		});
+
+		filterBy(0);
+
 	});
 
-	$("#menu a").click(function (e) {
-		var clickedLayer = this.id;
-		e.preventDefault();
-		e.stopPropagation();
-
-		if (this.className === 'active') {
-			this.className = '';
-		} else {
-			this.className = 'active';
-		};
-		getActiveLayers();
-	});
 };
